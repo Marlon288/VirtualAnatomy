@@ -1,10 +1,10 @@
 import React from "react";
-import BoneModel from "./BoneModel";
+import ModelViewer from "./BoneModel";
 
 function App() {
   return(
     <>
-      <BoneModel/>
+      <ModelViewer scale="40" modelPath={"./cube.gltf"} />
       <button>Change Layer</button>
       <button>Settings</button>
     </>
