@@ -1,0 +1,14 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  body {
+    background-color: black;
+  }
+.canvas{
+  width: 200px;
+  height: 200px;
+}

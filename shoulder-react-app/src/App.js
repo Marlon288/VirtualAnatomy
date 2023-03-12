@@ -1,12 +1,12 @@
-import React from "react";
-import ModelViewer from "./BoneModel";
+import React, { Suspense } from "react";
+import {Canvas} from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import BoneModel from "./components/BoneModelHandler"
 
 function App() {
   return(
     <>
-      <ModelViewer scale="10" modelPath={"/cube.glb"} />
-      <button>Change Layer</button>
-      <button>Settings</button> 
+      <BoneModel/>
     </>
   );
 }

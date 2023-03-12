@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useLoader, useFrame, Canvas} from "@react-three/fiber";
+import { useLoader, useFrame} from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const GltfModel = ({ modelPath, scale = 40, position = [0, 0, 0] }) => {
