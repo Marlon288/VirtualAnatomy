@@ -9,6 +9,96 @@
     background-color: black;
   }
 .canvas{
-  width: 200px;
-  height: 200px;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+.button{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 0.2px solid #BC9F6D;
+  background-color: #1E1E1E;
+  box-shadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)';
+}
+.button:hover{
+  border-color: #F0EAD6;
+}
+.button:hover > * > * > *, .button:hover > * > *, .button:hover > * {
+  stroke: #F0EAD6 !important;
+  stroke-width: 1.2px !important;
+}
+
+.cog{
+  position:fixed;
+  bottom: 15px;
+  left: 15px;
+}
+.reset{
+  position:fixed;
+  bottom: 75px;
+  left: 15px;
+}
+
+.info{
+  position:fixed;
+  bottom: 195px;
+  left: 15px;
+}
+
+.play{
+  position:fixed;
+  bottom: 135px;
+  left: 15px;
+}
+
+
+.layer{
+  position:fixed;
+  bottom: 15px;
+  left: 75px;
+}
+
+
+/*.cog:hover > * > * > :last-child, .cog:hover > * > :last-child, .cog:hover > :last-child{
+  fill:#BC9F6D;
+  stroke: #1E1E1E !important;
+  stroke-width: 1.5px !important;
+}*/
+.icon{
+  fill:#1E1E1E; 
+}
+/*.icon-filled, .icon-filled > :last-child, .icon-filled > g > :last-child{
+  fill:#BC9F6D !important;
+  stroke: #1E1E1E !important;
+  stroke-width: 1.5px !important;
+}*/
+
+.icon > path, .icon > g > path{  
+  stroke: #BC9F6D;
+  stroke-width: 1px;
+}
+#layer{
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+
+/*ANIMATION*/
+.fade-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1000ms, transform 1000ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }
