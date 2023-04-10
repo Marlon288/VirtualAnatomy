@@ -1,9 +1,13 @@
+body{
+  overflow: hidden;
+}
 .App {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
   body {
     background-color: black;
@@ -101,4 +105,9 @@
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 300ms, transform 300ms;
+}
+
+.tooltip{
+  color: white;
+  background-color: #BC9F6D;
 }
