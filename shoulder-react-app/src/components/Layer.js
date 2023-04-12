@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Layer() {
+function Layer({ onToggleVisibility }) {
   return (
-    <div className='button layer'>
+    <div className='button layer' onClick={onToggleVisibility}>
         <svg className="icon" id="layer"version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="35px" height="35px" viewBox="0 0 33 32" enableBackground="new 0 0 33 32" xmlSpace="preserve">
         <g>
           <path d="M33.004,22.403c0-0.557-0.304-1.067-0.794-1.331c-0.242-0.131-0.546-0.04-0.678,0.203

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
 body{
   overflow: hidden;
 }
@@ -108,6 +111,25 @@ body{
 }
 
 .tooltip{
+  position: fixed;
+  right: 30px;
+  top: 50px;
+  width: 200px;
+  padding: 10px 10px 20px 10px;
   color: white;
-  background-color: #BC9F6D;
+  background-color: #1E1E1E;
+  border: 1px solid #BC9F6D;
+}
+.tooltip > h3 {
+  color: #BC9F6D;
+  font-family: 'Inter', sans-serif;
+  font-weight: 200; /* Set the font-weight to the thin version (100) */
+  font-size: 20px;
+  margin-bottom: 0px
+}
+
+.tooltip > p{
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  margin-top: 5px;
 }

@@ -7,6 +7,7 @@ import Layer from "./components/Layer";
 
 function App() {
   const [resetPosition, setResetPosition] = useState(false);
+  const [visibility, setVisibility] = useState(1);
 
   const handleResetPosition = () => {
     setResetPosition(true);
@@ -16,11 +17,20 @@ function App() {
     }, 500); 
   };
 
+
+  const toggleVisibility = () => {
+    if (visibility === 3) {
+      setVisibility(1);
+    } else {
+      setVisibility(visibility + 1);
+    }
+  };
+
   return( 
     <>
-      <BoneModel resetPosition={resetPosition}/>
+      <BoneModel visibility={visibility} resetPosition={resetPosition}/>
       <Cog onResetPosition={handleResetPosition}/>
-      <Layer/>
+      <Layer onToggleVisibility={toggleVisibility}/>
     </>
   );
 }

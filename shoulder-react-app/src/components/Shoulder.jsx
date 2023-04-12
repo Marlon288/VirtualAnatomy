@@ -27,6 +27,7 @@ export function Shoulder(props) {
             geometry={nodes.Bones_Layed_out001.geometry} 
             material={materials['initialShadingGroup.001']} 
             rotation={[Math.PI / 2, 0, 0]} 
+            
         />
       </group>
     </group>
