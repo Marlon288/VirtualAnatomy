@@ -135,7 +135,7 @@ body{
 }
 
 .infoButt{
-  right: 30px;
+  right: 25px;
   top: auto !important;
   bottom: 50px;
   width: 350px;
@@ -153,8 +153,9 @@ body{
     width: 200px !important;
   } 
 }
-@media (max-width: 390px) {
+@media (max-width: 370px) {
   .tooltip{
-    width: 200px
+    width: 220px;
+    top: 20px;
   } 
 }

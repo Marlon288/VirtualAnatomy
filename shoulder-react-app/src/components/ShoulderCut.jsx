@@ -27,7 +27,6 @@ export function ShoulderCut({ visibility, ...props }) {
     
     description = description.replace(/(Insertion:|Origin:)/g, '<br><b>$1</b>');
     
-    
     const formattedDescription = `<p style="font-size: 14px; line-height: 1.5;">${description}</p>`;
     
     return formattedDescription;
