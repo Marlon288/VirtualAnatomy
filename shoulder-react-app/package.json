@@ -2,7 +2,7 @@
   "name": "shoulder-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://<your-github-username>.github.io/<repository-name>/",
+  "homepage": "https://Marlon288.github.io/VirtualAnatomy/",
   "dependencies": {
     "@react-three/drei": "^9.57.1",
     "@react-three/fiber": "^8.11.10",
