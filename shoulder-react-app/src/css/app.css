@@ -114,7 +114,7 @@ body{
   position: fixed;
   right: 30px;
   top: 50px;
-  width: 200px;
+  width: 300px;
   padding: 10px 10px 20px 10px;
   color: white;
   background-color: #1E1E1E;
@@ -124,12 +124,37 @@ body{
   color: #BC9F6D;
   font-family: 'Inter', sans-serif;
   font-weight: 200; /* Set the font-weight to the thin version (100) */
-  font-size: 20px;
+  font-size: 23px;
   margin-bottom: 0px
 }
 
 .tooltip > p{
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 5px;
+}
+
+.infoButt{
+  right: 30px;
+  top: auto !important;
+  bottom: 50px;
+  width: 350px;
+}
+.infoButt > h3{
+  margin-top: 0px !important;
+  font-size: 20px;
+}
+.infoButt > p {
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .infoButt{
+    width: 200px !important;
+  } 
+}
+@media (max-width: 390px) {
+  .tooltip{
+    width: 200px
+  } 
 }

@@ -1,39 +1,48 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import Shoulder from "./Shoulder";
 import { Vector2, Raycaster } from "three";
 import ShoulderCut from "./ShoulderCut";
 
 const startingPosition = [0, 0, 500]; // Set the desired starting position [x, y, z]
 const cameraFov = 50; // Set the desired camera field of view (zoom)
 
-function InteractiveModel({ setSelectedObject, visibility, resetPosition}) {
-  const modelRef = useRef();
-  const { camera } = useThree();
-  const raycaster = new Raycaster();
-  const mouse = new Vector2();
-  const [prevSelectedObject, setPrevSelectedObject] = useState(null);
-  useEffect(() => {
-    if (resetPosition && prevSelectedObject && prevSelectedObject.material && prevSelectedObject.material.emissive) {
-      prevSelectedObject.material.emissive.set(0x000000);
-      prevSelectedObject.material.emissiveIntensity = 0;
-      setSelectedObject(null);
-      setPrevSelectedObject(null);
+function getMeshObjects(group) {
+  if(!group) return;
+  const meshes = [];
+  group.traverse((object) => {
+    if (object.isMesh) {
+      meshes.push(object);
     }
-  }, [resetPosition]);
+  });
+  return meshes;
+}
 
-  function handleCanvasMouseMove(event) {
+function throttle(func, wait) {
+  let lastCalled = 0;
+  return function(...args) {
+    const now = Date.now();
+    if (now - lastCalled >= wait) {
+      lastCalled = now;
+      func.apply(this, args);
+    }
+  };
+}
+
+
+ /* 
+ Not in use right now, because it is too cpu intensive 
+ function handleCanvasMouseMove(event) {
     // Calculate normalized device coordinates (NDC) from the hovered point
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   
     // Update the raycaster object with the NDC coordinates and the camera
     raycaster.setFromCamera(mouse, camera);
-  
-    // Intersect the hovered point with the 3D model
-    const intersects = raycaster.intersectObjects(modelRef.current.children, true);
-    
+    const meshObjects = getMeshObjects(modelRef.current);
+
+    // Intersect the clicked point with the 3D model
+    const intersects = raycaster.intersectObjects(meshObjects, true);
 
 
     // Reset emissive properties of all objects in the model
@@ -53,50 +62,74 @@ function InteractiveModel({ setSelectedObject, visibility, resetPosition}) {
       }
     }
   }
+  */
   
-  
-  
-  
-  function handleCanvasClick(event) {
-    // Calculate normalized device coordinates (NDC) from the clicked point
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  
-    // Update the raycaster object with the NDC coordinates and the camera
-    raycaster.setFromCamera(mouse, camera);
-  
-    // Intersect the clicked point with the 3D model
-    const intersects = raycaster.intersectObjects(modelRef.current.children, true);
-  
-    if (prevSelectedObject && prevSelectedObject.material && prevSelectedObject.material.emissive) {
-      prevSelectedObject.material.emissive.set(0x000000);
-      prevSelectedObject.material.emissiveIntensity = 0;
-    }
-    if (intersects.length > 0) {
-      const selected = intersects[0].object;
-      setSelectedObject(selected);
-      setPrevSelectedObject(selected); // Store the selected object as the previous one
-      if (selected.material && selected.material.emissive) {
-        selected.material.emissive.set(0x00FF00); // Set the emissive color to a lighter gray
-        selected.material.emissiveIntensity = 1; // Set the emissive intensity
+  const InteractiveModel = React.memo(function InteractiveModel({ setSelectedObject, visibility, resetPosition }) {
+    const modelRef = useRef();
+    const { camera } = useThree();
+    const raycaster = new Raycaster();
+    const mouse = new Vector2();
+    const [prevSelectedObject, setPrevSelectedObject] = useState(null);
+    const meshObjects = useMemo(() => modelRef.current && getMeshObjects(modelRef.current), [modelRef.current]);
+
+    useEffect(() => {
+      if (resetPosition && prevSelectedObject && prevSelectedObject.material && prevSelectedObject.material.emissive) {
+        prevSelectedObject.material.emissive.set(0x000000);
+        prevSelectedObject.material.emissiveIntensity = 0;
+        setSelectedObject(null);
+        setPrevSelectedObject(null);
       }
-    } else {
-      setSelectedObject(null);
-    }
-  }
+    }, [resetPosition]);
   
 
-  return (
-    <group ref={modelRef} onClick={handleCanvasClick}>
-      <mesh position={[0, 7, 0]}>
-        <ShoulderCut visibility={visibility}/>
-      </mesh>
-    </group>
-  );
-}
+    const handleCanvasClick = useCallback(throttle((event) => {
+      // Calculate normalized device coordinates (NDC) from the clicked point
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      // Update the raycaster object with the NDC coordinates and the camera
+      raycaster.setFromCamera(mouse, camera);
+  
+      // Intersect the clicked point with the 3D model
+      const intersects = raycaster.intersectObjects(meshObjects, true);
 
-function BoneModelChild({ resetPosition, setSelectedObject, visibility }) {
-  console.log(visibility + "BoneModelChild");
+      const visibleIntersects = intersects.filter(intersect => {
+        const layerVisibility = visibility && intersect.object.userData.layer;
+        return !layerVisibility || layerVisibility <= visibility;
+      });
+
+  
+      if (prevSelectedObject && prevSelectedObject.material && prevSelectedObject.material.emissive) {
+        prevSelectedObject.material.emissive.set(0x000000);
+        prevSelectedObject.material.emissiveIntensity = 0;
+      }
+  
+      if (visibleIntersects.length > 0) {
+        const selected = intersects[0].object;
+        // Clone the material and assign it to the selected mesh
+        if (selected.material && selected.material.emissive) {
+          selected.material = selected.material.clone();
+          selected.material.emissive.set(0x00FF00);
+          selected.material.emissiveIntensity = 0.1;
+        }
+  
+        setSelectedObject(selected);
+        setPrevSelectedObject(selected);
+      } else {
+        setSelectedObject(null);
+        setPrevSelectedObject(null);
+      }
+    }, 500), [camera, meshObjects, setSelectedObject, setPrevSelectedObject, prevSelectedObject]);
+  
+    return (
+      <group ref={modelRef} onClick={handleCanvasClick}>
+        <mesh position={[0, 4, 0]}>
+          <ShoulderCut visibility={visibility} />
+        </mesh>
+      </group>
+    );
+  }); 
+
+const BoneModelChild = React.memo(function BoneModelChild({ resetPosition, setSelectedObject, visibility }) {
   const cameraRef = useRef();
   const modelRefChild = useRef();
   useEffect(() => {
@@ -112,7 +145,7 @@ function BoneModelChild({ resetPosition, setSelectedObject, visibility }) {
 
   return (
     <>
-      <Canvas className="canvas">
+      <Canvas className="canvas" >
         <PerspectiveCamera makeDefault fov={cameraFov} position={startingPosition} ref={cameraRef} />
         <OrbitControls
           enableZoom={true}
@@ -131,23 +164,23 @@ function BoneModelChild({ resetPosition, setSelectedObject, visibility }) {
       </Canvas>
     </>
   );
-}
+});
 
-function BoneModel({ resetPosition, visibility }) {
-  console.log(visibility + "BoneModel");
+const BoneModel = React.memo(function BoneModel({ resetPosition, visibility }) {
   const [selectedObject, setSelectedObject] = useState(null);
+  
   return (
   <div>
     <BoneModelChild visibility={visibility} resetPosition={resetPosition} setSelectedObject={setSelectedObject} />
     {selectedObject && (
       <div className="tooltip">
-        <h3>{selectedObject.name}</h3>
-        <p>{selectedObject.userData.description} Here is a very cool description of the part of the bone</p>
-      </div>
+        <h3>{selectedObject.UserData.name}</h3>
+        <p dangerouslySetInnerHTML={{ __html: selectedObject.UserData.prop }}></p>
+      </div>  
     )}
   </div>
   );
-  }
-  
+});
+
 
 export default BoneModel;

@@ -19,12 +19,12 @@ function App() {
 
 
   const toggleVisibility = () => {
-    if (visibility === 3) {
+    if (visibility === 4) {
       setVisibility(1);
     } else {
       setVisibility(visibility + 1);
     }
-  };
+  };  
 
   return( 
     <>
