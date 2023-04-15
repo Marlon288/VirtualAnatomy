@@ -88,38 +88,47 @@ function throttle(func, wait) {
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
       // Update the raycaster object with the NDC coordinates and the camera
       raycaster.setFromCamera(mouse, camera);
-  
+    
       // Intersect the clicked point with the 3D model
       const intersects = raycaster.intersectObjects(meshObjects, true);
-
       const visibleIntersects = intersects.filter(intersect => {
-        const layerVisibility = visibility && intersect.object.userData.layer;
-        return !layerVisibility || layerVisibility <= visibility;
+        if(visibility >= 2 && intersect.object.UserData.name === "Skin") return false;
+        else if(visibility >= 3 && intersect.object.material.name === "Muscle TXT") return false;
+        else if(visibility >= 4 && intersect.object.material.name === "Ligmant TXT")return false;
+        else return true;
       });
-
-  
+    
       if (prevSelectedObject && prevSelectedObject.material && prevSelectedObject.material.emissive) {
         prevSelectedObject.material.emissive.set(0x000000);
         prevSelectedObject.material.emissiveIntensity = 0;
       }
-  
+    
       if (visibleIntersects.length > 0) {
-        const selected = intersects[0].object;
+        const selected = visibleIntersects[0].object;
         // Clone the material and assign it to the selected mesh
         if (selected.material && selected.material.emissive) {
           selected.material = selected.material.clone();
-          selected.material.emissive.set(0x00FF00);
-          selected.material.emissiveIntensity = 0.1;
+          
+          if(selected.material.name === "Ligmant TXT") {
+            selected.material.emissive.set(0xFF0000);
+            selected.material.emissiveIntensity = 3;
+          }
+          else {
+            selected.material.emissive.set(0x00FF00);
+            selected.material.emissiveIntensity = 0.1;
+          }
         }
-  
+    
         setSelectedObject(selected);
         setPrevSelectedObject(selected);
       } else {
+        prevSelectedObject.material.emissive.set(0x000000);
+        prevSelectedObject.material.emissiveIntensity = 0;
         setSelectedObject(null);
         setPrevSelectedObject(null);
       }
     }, 500), [camera, meshObjects, setSelectedObject, setPrevSelectedObject, prevSelectedObject]);
-  
+    
     return (
       <group ref={modelRef} onClick={handleCanvasClick}>
         <mesh position={[0, 4, 0]}>
