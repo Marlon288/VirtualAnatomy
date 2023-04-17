@@ -48,12 +48,6 @@ body{
 
 .info{
   position:fixed;
-  bottom: 195px;
-  left: 15px;
-}
-
-.play{
-  position:fixed;
   bottom: 135px;
   left: 15px;
 }

@@ -32,9 +32,6 @@ function Cog({onResetPosition}) {
           <CSSTransition onResetPosition={onResetPosition} key="reset" timeout={300} classNames="fade">
             <Reset/>
           </CSSTransition>
-          <CSSTransition key="play" timeout={300} classNames="fade">
-            <Play/>
-          </CSSTransition>
           <CSSTransition key="info" timeout={300} classNames="fade">
             <Info/>
           </CSSTransition>
