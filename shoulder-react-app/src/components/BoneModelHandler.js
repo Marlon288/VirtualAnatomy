@@ -81,7 +81,14 @@ function throttle(func, wait) {
         setPrevSelectedObject(null);
       }
     }, [resetPosition]);
-  
+    
+    useEffect(() => {
+      if(!prevSelectedObject) return;
+      prevSelectedObject.material.emissive.set(0x000000);
+      prevSelectedObject.material.emissiveIntensity = 0;
+      setSelectedObject(null);
+      setPrevSelectedObject(null);
+    }, [visibility]);
 
     const handleCanvasClick = useCallback(throttle((event) => {
       // Calculate normalized device coordinates (NDC) from the clicked point
