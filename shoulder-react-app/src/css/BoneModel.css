@@ -1,0 +1,17 @@
+.arrow {
+    cursor: pointer;
+    margin-top: 7px;
+    color: white;
+  }
+  
+  .arrow:not(.collapsed) {
+    color: #BC9F6D;
+  }
+  
+  .arrow:hover {
+    color: #BC9F6D;
+  }
+  
+  .arrow:not(.collapsed):hover {
+    color: white;
+  }

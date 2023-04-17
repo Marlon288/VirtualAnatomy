@@ -3,6 +3,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Vector2, Raycaster } from "three";
 import ShoulderCut from "./ShoulderCut";
+import "../css/BoneModel.css";
 
 const startingPosition = [0, 0, 500]; // Set the desired starting position [x, y, z]
 const cameraFov = 50; // Set the desired camera field of view (zoom)
@@ -160,7 +161,7 @@ const BoneModelChild = React.memo(function BoneModelChild({ resetPosition, setSe
           enableZoom={true}
           enablePan={false}
           rotateSpeed={1} // Decrease the sensitivity of camera rotation
-          zoomSpeed={10} // Decrease the sensitivity of camera zoom
+          zoomSpeed={0.7} // Decrease the sensitivity of camera zoom
           panSpeed={1} // Decrease the sensitivity of camera panning
           minDistance={10}
           maxDistance={50}
@@ -177,17 +178,34 @@ const BoneModelChild = React.memo(function BoneModelChild({ resetPosition, setSe
 
 const BoneModel = React.memo(function BoneModel({ resetPosition, visibility }) {
   const [selectedObject, setSelectedObject] = useState(null);
+  const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 380);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   
   return (
-  <div>
-    <BoneModelChild visibility={visibility} resetPosition={resetPosition} setSelectedObject={setSelectedObject} />
-    {selectedObject && (
-      <div className="tooltip">
-        <h3>{selectedObject.UserData.name}</h3>
-        <p dangerouslySetInnerHTML={{ __html: selectedObject.UserData.prop }}></p>
-      </div>  
-    )}
-  </div>
+    <div>
+      <BoneModelChild visibility={visibility} resetPosition={resetPosition} setSelectedObject={setSelectedObject} />
+      {selectedObject && (
+        <div className="tooltip">
+          <h3>{selectedObject.UserData.name}</h3>
+          {selectedObject.UserData.prop && (
+            <div
+              onClick={toggleCollapse}
+              aria-expanded={!isCollapsed}
+              className={`arrow ${isCollapsed ? '' : 'collapsed'}`}
+            >
+              {isCollapsed ? '▼' : '▲'}
+            </div>
+          )}
+          {!isCollapsed && (
+            <p dangerouslySetInnerHTML={{ __html: selectedObject.UserData.prop }}></p>
+          )}
+        </div>
+      )}
+    </div>
   );
 });
 

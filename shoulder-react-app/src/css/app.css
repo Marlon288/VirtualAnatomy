@@ -90,32 +90,13 @@ body{
 }
 
 
-/*ANIMATION*/
-.fade-enter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-.fade-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 1000ms, transform 1000ms;
-}
-.fade-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 300ms, transform 300ms;
-}
 
 .tooltip{
   position: fixed;
   right: 30px;
   top: 50px;
   width: 300px;
-  padding: 10px 10px 20px 10px;
+  padding: 0px 10px 20px 10px;
   color: white;
   background-color: #1E1E1E;
   border: 1px solid #BC9F6D;
@@ -126,13 +107,17 @@ body{
   font-weight: 200; /* Set the font-weight to the thin version (100) */
   font-size: 23px;
   margin-bottom: 0px
+  
 }
 
 .tooltip > p{
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 5px;
+  line-height: 1.5;
 }
+
+
 
 .infoButt{
   right: 25px;
@@ -141,11 +126,12 @@ body{
   width: 350px;
 }
 .infoButt > h3{
-  margin-top: 0px !important;
+  margin-top: 5px !important;
   font-size: 20px;
 }
 .infoButt > p {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 @media (max-width: 560px) {
@@ -153,9 +139,16 @@ body{
     width: 200px !important;
   } 
 }
-@media (max-width: 370px) {
+@media (max-width: 380px) {
   .tooltip{
     width: 220px;
     top: 20px;
-  } 
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .infoButt{
+    right: 25px !important;
+    left: auto;
+    transform: translate(0,0);
+  }
 }
