@@ -111,13 +111,14 @@ function throttle(func, wait) {
         prevSelectedObject.material.emissiveIntensity = 0;
       }
     
-      if (visibleIntersects.length > 0) {
+      if (visibleIntersects.length > 0 ) {
         const selected = visibleIntersects[0].object;
         // Clone the material and assign it to the selected mesh
         if (selected.material && selected.material.emissive) {
           selected.material = selected.material.clone();
-          
-          if(selected.material.name === "Ligmant TXT") {
+          if(selected.material.name === "Skin TXT"){
+            return;
+          }else if(selected.material.name === "Ligmant TXT") {
             selected.material.emissive.set(0xFF0000);
             selected.material.emissiveIntensity = 3;
           }
