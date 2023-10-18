@@ -17,6 +17,8 @@ function Info() {
          <h3>Info</h3>
           <p>This website was done as part of a Project at the University of Dundee.
             <br/><br/>
+            Please fill out the <a href='https://forms.office.com/e/0pbvx5G9wA'>Feedback Form</a>, it would greatly further help this project grow.
+            <br/>
             <b>Anatomists</b> - Madison Gordon-Mara, Sadie Tremblay, Sean Johnson
             <br/>
             <b>3D Artists</b> - Philip Cooper, Meghana Mokhasi

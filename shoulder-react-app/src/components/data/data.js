@@ -116,19 +116,19 @@ const data =
         "name": "Trapezius Muscle Bulk",
         "prop": ""
     },
-    "Calvicle Overlay": {
+    "Calvicle_Overlay": {
         "name": "Calvicle",
         "prop": ""
     },
-    "Scapula Overlay": {
+    "Scapula_Overlay": {
         "name": "Scapula",
         "prop": ""
     },
-    "Glenohumeral joint overlay": {
+    "Glenohumeral_joint_overlay": {
         "name": "Glenohumeral Joint",
         "prop": ""
     },
-    "Coracoid process overlay": {
+    "Coracoid_process_overlay": {
         "name": "Coracoid",
         "prop": ""
     }
