@@ -20,7 +20,7 @@ export function ShoulderCut({ visibility, ...props }) {
   }, [materials]);
 
   function formatPropData(propData) {
-    const splitData = propData.split(/-| \u2013 /);
+    const splitData = propData.split(/\u2013/);
 
     const name = splitData[0].trim();
     var description = "";
