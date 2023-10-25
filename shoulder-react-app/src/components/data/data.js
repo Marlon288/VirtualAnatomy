@@ -120,15 +120,15 @@ const data =
         "name": "Clavicle",
         "prop": "Medial - (purple dashed line) - sternoclavicular joint. Lateral - (grey dashed line) - acromiclavicular joint."
     },
-    "Scapula Overlay": {
+    "Scapula_Overlay": {
         "name": "Scapula",
         "prop": "Orange - scapular spine. Blue - acromion."
     },
-    "Glenohumeral joint overlay": {
+    "Glenohumeral_joint_overlay": {
         "name": "Glenohumeral Joint",
         "prop": ""
     },
-    "Coracoid process overlay": {
+    "Coracoid_process_overlay": {
         "name": "Coracoid",
         "prop": "Provides attachment for three different muscles: coracobrachialis, pectoralis minor and short head of biceps brachii."
     }
