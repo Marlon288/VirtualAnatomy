@@ -2,11 +2,11 @@ const data =
 {
     "Superior_Transverse_Scapular_Ligament": {
         "name": "Superior Transverse Scapular Ligament",
-        "prop": "Superior Transverse Scapular Ligament - attaches at either end of the suprascapular notch to form the suprascapular foramen"
+        "prop": "Superior Transverse Scapular Ligament \u2013 attaches at either end of the suprascapular notch to form the suprascapular foramen"
     },
     "Glenohumeral_Ligament": {
         "name": "Glenohumeral Ligament",
-        "prop": "Ligaments of the Joint Capsule Coracohumeral ligament - Thickens the joint capsule on the superior aspect. Origin: Base of the coracoid process of the scapula. Insertion: Greater tubercle of the humerus. <br/><br/> <b>Superior Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Lesser tubercle of the humerus. <br/><br/> <b>Middle Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Lesser tubercle of the humerus. <br/><br/><b>Inferior Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Anatomical neck of the humerus."
+        "prop": "Ligaments of the Joint Capsule Coracohumeral ligament \u2013 Thickens the joint capsule on the superior aspect. Origin: Base of the coracoid process of the scapula. Insertion: Greater tubercle of the humerus. <br/><br/> <b>Superior Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Lesser tubercle of the humerus. <br/><br/> <b>Middle Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Lesser tubercle of the humerus. <br/><br/><b>Inferior Glenohumeral ligament</b>Origin: Superomedial margin of the glenoid cavity. Insertion: Anatomical neck of the humerus."
     },
     "Joint_Capsule": {
         "name": "Joint Capsule",
@@ -22,11 +22,11 @@ const data =
     },
     "Trapezoid_ligament": {
         "name": "Trapezoid Ligament",
-        "prop": "Coracoclavicular ligament (made of two separate ligaments) - Provides weight-bearing support for the upper limb on the clavicle; maintains position of the clavicle on the acromion of the scapula. Trapezoid ligament. Origin: Coracoid process of the scapula. Insertion: Trapezoid line of the clavicle "
+        "prop": "Coracoclavicular ligament (made of two separate ligaments) \u2013 Provides weight-bearing support for the upper limb on the clavicle; maintains position of the clavicle on the acromion of the scapula. Trapezoid ligament. Origin: Coracoid process of the scapula. Insertion: Trapezoid line of the clavicle "
     },
     "Conoid_ligament": {
         "name": "Conoid Ligament",
-        "prop" : "Coracoclavicular ligament (made of two separate ligaments) - Provides weight-bearing support for the upper limb on the clavicle; maintains position of the clavicle on the acromion of the scapula. Conoid ligament. Origin: Coracoid process of the scapula. Insertion: Conoid tubercle of the clavicle "
+        "prop" : "Coracoclavicular ligament (made of two separate ligaments) \u2013 Provides weight-bearing support for the upper limb on the clavicle; maintains position of the clavicle on the acromion of the scapula. Conoid ligament. Origin: Coracoid process of the scapula. Insertion: Conoid tubercle of the clavicle "
     },
     "Transverse humeral ligament": {
         "name": "Transverse Humeral Ligament",
