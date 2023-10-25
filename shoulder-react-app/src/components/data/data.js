@@ -117,20 +117,20 @@ const data =
         "prop": ""
     },
     "Calvicle_Overlay": {
-        "name": "Calvicle",
-        "prop": ""
+        "name": "Clavicle",
+        "prop": "Medial - (purple dashed line) - sternoclavicular joint. Lateral - (grey dashed line) - acromiclavicular joint."
     },
-    "Scapula_Overlay": {
+    "Scapula Overlay": {
         "name": "Scapula",
-        "prop": ""
+        "prop": "Orange - scapular spine. Blue - acromion."
     },
-    "Glenohumeral_joint_overlay": {
+    "Glenohumeral joint overlay": {
         "name": "Glenohumeral Joint",
         "prop": ""
     },
-    "Coracoid_process_overlay": {
+    "Coracoid process overlay": {
         "name": "Coracoid",
-        "prop": ""
+        "prop": "Provides attachment for three different muscles: coracobrachialis, pectoralis minor and short head of biceps brachii."
     }
 };
 
