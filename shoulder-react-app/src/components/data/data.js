@@ -14,7 +14,7 @@ const data =
     },
     "Coracoacromial Ligament": {
         "name": "Coracoacromial Ligament",
-        "prop": "Coracoacromial Ligament"
+        "prop": ""
     },
     "Acromioclavicular Ligament": {
         "name": "Acromioclavicular Ligament",
@@ -118,11 +118,11 @@ const data =
     },
     "Calvicle_Overlay": {
         "name": "Clavicle",
-        "prop": "Medial - (purple dashed line) - sternoclavicular joint. Lateral - (grey dashed line) - acromiclavicular joint."
+        "prop": "Medial (purple dashed line) : <br>sternoclavicular joint. <br><br> Lateral (grey dashed line) : <br>acromioclavicular joint."
     },
     "Scapula_Overlay": {
         "name": "Scapula",
-        "prop": "Orange - scapular spine. Blue - acromion."
+        "prop": "Orange - scapular spine. <br><br>Blue - acromion."
     },
     "Glenohumeral_joint_overlay": {
         "name": "Glenohumeral Joint",
@@ -130,7 +130,7 @@ const data =
     },
     "Coracoid_process_overlay": {
         "name": "Coracoid",
-        "prop": "Provides attachment for three different muscles: coracobrachialis, pectoralis minor and short head of biceps brachii."
+        "prop": "Provides attachment for three different muscles: <br>coracobrachialis, pectoralis minor and short head of biceps brachii."
     }
 };
 

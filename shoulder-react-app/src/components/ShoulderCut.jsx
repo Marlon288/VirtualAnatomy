@@ -22,10 +22,9 @@ export function ShoulderCut({ visibility, ...props }) {
   function formatPropData(propData) {
     const splitData = propData.split(/\u2013/);
 
-    const name = splitData[0].trim();
     var description = "";
     if(splitData.length > 1) description = splitData[1].trim();
-    else description = "";
+    else if(splitData.length == 1) description = splitData[0].trim();
     
     description = description.replace(/(Insertion:|Origin:)/g, '<br><b>$1</b>');
     
